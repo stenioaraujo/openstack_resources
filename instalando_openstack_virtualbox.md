@@ -511,9 +511,14 @@ No arquivo `/etc/openstack-dashboard/local_settings.py` altere:
 
 Salve e feche
 
+Agora altere o arquivo `/etc/apache2/conf-avaliable/openstack-dashboard.conf`, adicionado a seguinte linha ao início do arquivo:
+
+    WSGIApplicationGroup %{GLOBAL}
+
 Restart as configurações Web:
 
     sudo service apache2 reload
+    sudo service apache2 restart
 
 Verifique se o serviço foi instalado corretamente, acesse do seu Browser:
 
