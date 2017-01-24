@@ -411,6 +411,11 @@ Na seção `[DEFAULT]` adicione:
     transport_url = rabbit://openstack:RABBIT_PASS@170.10.10.51
     use_neutron = True
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
+    metadata_listen_port = 8775
+    metadata_host = 170.10.10.51
+    metadata_manager = nova.api.manager.MetadataManager
+    metadata_listen = 0.0.0.0
+    metadata_port = 8775
 
 
 Na seção `[keystone_authtoken]` adicione (crie a seção se não existir):
@@ -702,7 +707,8 @@ Configure o metadata agent
 
 Na seção `[DEFAULT]` do arquivo `/etc/neutron/metadata_agent.ini`, altere:
 
-    nova_metadata_ip = 170.10.10.52
+    nova_metadata_ip = 170.10.10.51
+    nova_metadata_port = 8775
     metadata_proxy_shared_secret = METADATA_SECRET
 
 Salve o arquivo e feche
@@ -843,6 +849,9 @@ Na seção `[DEFAULT]` do arquivo `/etc/nova/nova.conf`, altere:
     my_ip = 170.10.10.53
     use_neutron = True
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
+    metadata_host = 170.10.10.51
+    metadata_port = 8775
+    metadata_manager = nova.api.manager.MetadataManager
 
 Remove `log-dir` da seção `[DEFAULT]`
 
