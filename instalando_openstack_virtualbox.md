@@ -1050,10 +1050,10 @@ Utilizando as credenciais padrões do Cirros, acesse-o utilizando o comando ssh:
 
 O password padrão para o sistema é `cubswin:)`
 
-Agora para habilitar acesso à internet a partir das VMs, você precisa fazer com que a máquina hospedeira rodando o VirtualBox faça um NAT da rede internet (172.10.10.0/24) para a rede que est conectada à internet (geralmente é a interface eth0). Para isto, na máquina hospedeira, execute (caso esteja usando Linux):
+Agora para habilitar acesso à internet a partir das VMs, você precisa fazer com que a máquina hospedeira rodando o VirtualBox faça um NAT da rede host-only do virtualbox (172.10.10.0/24) para a rede que está conectada à internet (geralmente é a interface eth0). Para isto, na máquina hospedeira, execute (caso esteja usando Linux):
 
-sudo /sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-sudo /sbin/iptables -A FORWARD -i eth0 -o vboxnet2 -m state --state RELATED,ESTABLISHED -j ACCEPT
-sudo /sbin/iptables -A FORWARD -i vboxnet2 -o eth0 -j ACCEPT
+    sudo /sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    sudo /sbin/iptables -A FORWARD -i eth0 -o vboxnet2 -m state --state RELATED,ESTABLISHED -j ACCEPT
+    sudo /sbin/iptables -A FORWARD -i vboxnet2 -o eth0 -j ACCEPT
 
 Pronto! :)
