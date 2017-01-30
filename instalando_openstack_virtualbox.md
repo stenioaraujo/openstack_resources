@@ -411,6 +411,11 @@ Na seção `[DEFAULT]` adicione:
     transport_url = rabbit://openstack:RABBIT_PASS@170.10.10.51
     use_neutron = True
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
+    metadata_listen_port = 8775
+    metadata_host = 170.10.10.51
+    metadata_manager = nova.api.manager.MetadataManager
+    metadata_listen = 0.0.0.0
+    metadata_port = 8775
 
 
 Na seção `[keystone_authtoken]` adicione (crie a seção se não existir):
@@ -511,9 +516,14 @@ No arquivo `/etc/openstack-dashboard/local_settings.py` altere:
 
 Salve e feche
 
+Agora altere o arquivo `/etc/apache2/conf-avaliable/openstack-dashboard.conf`, adicionado a seguinte linha ao início do arquivo:
+
+    WSGIApplicationGroup %{GLOBAL}
+
 Restart as configurações Web:
 
     sudo service apache2 reload
+    sudo service apache2 restart
 
 Verifique se o serviço foi instalado corretamente, acesse do seu Browser:
 
@@ -697,7 +707,8 @@ Configure o metadata agent
 
 Na seção `[DEFAULT]` do arquivo `/etc/neutron/metadata_agent.ini`, altere:
 
-    nova_metadata_ip = 170.10.10.52
+    nova_metadata_ip = 170.10.10.51
+    nova_metadata_port = 8775
     metadata_proxy_shared_secret = METADATA_SECRET
 
 Salve o arquivo e feche
@@ -838,6 +849,9 @@ Na seção `[DEFAULT]` do arquivo `/etc/nova/nova.conf`, altere:
     my_ip = 170.10.10.53
     use_neutron = True
     firewall_driver = nova.virt.firewall.NoopFirewallDriver
+    metadata_host = 170.10.10.51
+    metadata_port = 8775
+    metadata_manager = nova.api.manager.MetadataManager
 
 Remove `log-dir` da seção `[DEFAULT]`
 
@@ -1035,3 +1049,11 @@ Utilizando as credenciais padrões do Cirros, acesse-o utilizando o comando ssh:
     ssh cirros@X.X.X.X
 
 O password padrão para o sistema é `cubswin:)`
+
+Agora para habilitar acesso à internet a partir das VMs, você precisa fazer com que a máquina hospedeira rodando o VirtualBox faça um NAT da rede host-only do virtualbox (172.10.10.0/24) para a rede que está conectada à internet (geralmente é a interface eth0). Para isto, na máquina hospedeira, execute (caso esteja usando Linux):
+
+    sudo /sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    sudo /sbin/iptables -A FORWARD -i eth0 -o vboxnet2 -m state --state RELATED,ESTABLISHED -j ACCEPT
+    sudo /sbin/iptables -A FORWARD -i vboxnet2 -o eth0 -j ACCEPT
+
+Pronto! :)
