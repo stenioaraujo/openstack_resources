@@ -995,7 +995,7 @@ Verifique se os agentes do Neutron estão funcionando:
 Últimas configurações
 -------
 
- - **ATENÇÃO**: Todos os nodes(Compute, Network e Control) devem ter a mesma configuração de horário, senão os heartbeats dos serviços não funcionarão, logo, os serviços não funcionarão. Você pode atualizar a hora manualmente com o comando: (subistitua com a hora atual)
+ - **ATENÇÃO**: Todos os nodes(Compute, Network e Control) devem ter a mesma configuração de horário, senão os heartbeats dos serviços não funcionarão, logo, os serviços não funcionarão.
 
 Você pode atualizar a hora manualmente com o o comando: (substitua com a hora atual)
   
