@@ -1001,7 +1001,7 @@ Você pode atualizar a hora manualmente com o o comando: (substitua com a hora a
   
     sudo date --set "Thu Feb 16 13:48:33 BRT 2017"
 
-Para isto, logue no Controller Node:
+Depois que você verificar que os horários estão iguais, logue no Controller Node:
 
     ssh control@170.10.10.51
 
