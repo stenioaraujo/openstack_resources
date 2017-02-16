@@ -995,9 +995,13 @@ Verifique se os agentes do Neutron estão funcionando:
 Últimas configurações
 -------
 
-Para que seja possível lançar uma instância, é preciso primeiro criar a rede e subredes de provider:
+ - **ATENÇÃO**: Todos os nodes(Compute, Network e Control) devem ter a mesma configuração de horário, senão os heartbeats dos serviços não funcionarão, logo, os serviços não funcionarão.
 
-Para isto, logue no Controller Node:
+Você pode atualizar a hora manualmente com o o comando: (substitua com a hora atual)
+  
+    sudo date --set "Thu Feb 16 13:48:33 BRT 2017"
+
+Depois que você verificar que os horários estão iguais, logue no Controller Node:
 
     ssh control@170.10.10.51
 
