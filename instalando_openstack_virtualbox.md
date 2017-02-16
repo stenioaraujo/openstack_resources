@@ -814,17 +814,17 @@ Da sua máquina logue no Compute Node:
 
  Atualize a lista de pacotes e repositórios.
 
-    sudo apt-get update
+    sudo apt update
 
 Atualize Ubuntu Cloud Archive para Newton
 
-    sudo apt-get install ubuntu-cloud-keyring software-properties-common python-software-properties;
+    sudo apt install ubuntu-cloud-keyring software-properties-common python-software-properties;
     sudo add-apt-repository cloud-archive:newton;
-    sudo apt-get update
+    sudo apt update
 
 Instale NTP:
 
-    sudo apt-get install -y ntp
+    sudo apt install -y ntp
 
 Configure o servidor NTP para o Control Node OS:
 
