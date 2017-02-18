@@ -103,7 +103,7 @@ Na aba Armazenamento
 Durante a instalação do Sistema algumas opções de packages serão oferecidas para instalação, aceite apenas a instalação do servidor/cliente SSH (para selecionar pressione ESPAÇO não ENTER, ENTER apenas prossegue com a instalação). Demais packages não precisam ser instalados, isto evitará conflitos durante a instalação dos serviços do OpenStack.
 Quando se esta instalando o Ubuntu, será solicitado sua placa de rede primária. Selecione aquela correspondente ao Adaptador configurado para o NAT (Se você configurou o Control Node OS como acima, esta será eth2).
 
-Uma vez logado, prossiga com a instalação dos componentes necessários para rodar: Keystone (Identity), Nova (Compute), Cinder (Block Storage), Neutron (Quantum)
+Uma vez logado, prossiga com a instalação dos componentes necessários para rodar: Keystone (Identity), Nova (Compute), Neutron (Quantum)
 
 Dicas:
 
@@ -219,9 +219,6 @@ Na linha de comando do MySQL:
     
     CREATE DATABASE nova_api;
     GRANT ALL ON nova_api.* TO 'nova'@'%' IDENTIFIED BY 'NOVA_DBPASS';
-    
-    CREATE DATABASE cinder;
-    GRANT ALL ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'CINDER_DBPASS';
     
     quit;
 
