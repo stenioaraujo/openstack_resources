@@ -1,10 +1,10 @@
 Sobre
 -------
-Este guia foi desenvolvido para auxliar os alunos da Disciplina **Provisionamento e Operação de Infraestrutura**.
+Este guia foi desenvolvido para auxliar os alunos da Disciplina **Provisionamento e Operação de Infraestrutura** do LSD/UFCG.
 
 Professor Orientador: **Andrey Brito**
 
-<a href=https://www.lsd.ufcg.edu.br><img src="https://raw.githubusercontent.com/stenioaraujo/openstack_resources/master/LSD_logo.png" alt="LSD" width="20%"></a>
+<a href=https://www.lsd.ufcg.edu.br><img src="https://raw.githubusercontent.com/stenioaraujo/openstack_resources/master/LSD_logo.png" alt="LSD" width="20%"> </a><img src="http://www.cdsa.ufcg.edu.br/home/arq/logomarca/logo_atual/UFCG-Central.png" alt=UFCG width=17%>
 
 Instalando OpenStack no VirtualBox
 -------
